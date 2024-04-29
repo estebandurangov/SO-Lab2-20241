@@ -400,6 +400,7 @@ int main(int argc, char const *argv[]) {
         
     //Leer argumentos de archivo de texto
     } else if(argc >= 2){
+        
         FILE *file;
         char line[100];
         file = fopen(argv[1], "r");
@@ -409,15 +410,47 @@ int main(int argc, char const *argv[]) {
             return 1;
         }
 
-        //* ------------TEST 13------------     Input file is valid and empty. But shell is invoked in batch mode with 2 files (with same file 13.in used twice)*
+        
+        //* ------------TEST 13------------     Input line is valid and empty. But shell is invoked in batch mode with 2 files (with same file 13.in used twice)*
         if (fgets(line, sizeof(line), file) == NULL ) {
             fprintf(stderr, "An error has occurred13\n");
             exit (1);
         }
-   
-        //While seeing all lines
+
+        // ------------TEST 15------------     line whitespace.         DONE
         
+        
+        
+        
+
+        //While seeing all lines
+        int k = 1; //entradas al do
         do  {
+            
+            k++;
+            int i = 0;
+            int flag = 0;
+            while (line[i] == ' ')
+            {
+                if (line[i+1] == '\n') {
+                    flag = 1;
+                    break;
+                } //else if(line[i+1] == '\n' && line[i] == ' '){
+                    //quitarle los espacios a esa linea y enviar a ejecutar el restante
+
+                    //memmove(line, line + i, strlen(line)-i+1);
+        
+                //}
+                i++;
+            }
+
+            
+            
+            if (flag == 1) {
+                continue;
+            }
+
+            
 
             int aux = searchCharFromString(line);
             
@@ -427,10 +460,11 @@ int main(int argc, char const *argv[]) {
                 
                 continue;
             }
-
+            
             wishPerLine(line);
             
         } while (fgets(line, sizeof(line), file));
+        
         fclose(file);
         return 0;
     }

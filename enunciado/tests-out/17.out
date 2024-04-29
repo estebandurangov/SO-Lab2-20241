@@ -2,13 +2,4 @@ test1
 test2
 test3
 test4
-line: path tests
-
-comando sin &
-line: p1.sh & p2.sh &
-
-comando con &
 newLine: p1.sh 
-line: exit
-
-comando sin &
