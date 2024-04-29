@@ -184,7 +184,6 @@ int searchChar(char *arr[]){
         }
     }
     return -1;
-    
 }
 
 void wishPerLine(char *line){
@@ -237,9 +236,7 @@ void wishPerLine(char *line){
             //* ------------TEST 3------------ ls with a bad directory name.        DONE
             fprintf(stderr, "ls: cannot access '%s': No such file or directory\n", ruta);
             return;
-        } else {
-            
-        }
+        } 
     }
 
     //* ------------TEST 5------------ Exit with other argument.         DONE    
@@ -307,6 +304,12 @@ int main(int argc, char const *argv[]) {
         int a;
         while (fgets(line, sizeof(line), file)) {
             
+            if (strchr(line, '&')) {
+                printf("comando con &\n");
+                parallelCommands(line);
+                continue;
+            }
+
             wishPerLine(line);
 
         }
